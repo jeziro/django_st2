@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block main_slider %}
+   <div class="container">
+      <div class="hero-white">
+         {% include 'includes/inc_main_menu.html' %}
+      </div>
+{% endblock %}
+
+{% block content %}
+      <div class="details">
+         <div class="links clearfix">
+             {% include 'inc_categories_menu.html' %}
+         </div>
+        <div class="row my-5">
+            <div class="col-6">
+                <div class="slider-product">
+                  <img src="/media/{{ product.image }}" class="w-100">
+                </div>
+                <div class="slider-control ml-2 my-3">
+                  <div class="block">
+                    <a href="#"><img src="/media/{{ product.image }}" alt=""></a>
+                  </div>
+                  <div class="block">
+                    <a href="#"><img src="/media/{{ product.image }}" alt=""></a>
+                  </div>
+                  <div class="block">
+                    <a href="#"><img src="/media/{{ product.image }}" alt=""></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <h3 class="big-bold">{{ product.name }}</h3>
+{#                <h3 class="red">горячее предложение</h3>#}
+                <p class="price">{{ product.price }} <span>руб</span></p>
+                <a href="{% url 'basket:add' product.pk %}" class="red-button">
+                  заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+                <div class="description-text">
+                  {{ product.description }}
+                </div>
+            </div>
+        </div>
+
+         <div class="related">
+            <div class="title clearfix">
+               <h2>Похожие продукты</h2>
+               <a class="explore" href="#">показать все <img src="/static/img/arrow.png" alt=""></a>
+            </div>
+            <div class="related-products clearfix">
+               <div class="block">
+                  <a href="#"><img src="/static/img/product-11.jpg" alt="">
+                     <div class="text">
+                        <img src="/static/img/icon-hover.png" alt="img">
+                        <h4>Стул повышенного качества</h4>
+                        <p>Не оторваться. </p>
+                     </div>
+                  </a>
+               </div>
+               <div class="block">
+                  <a href="#"><img src="/static/img/product-21.jpg" alt="">
+                     <div class="text">
+                        <img src="/static/img/icon-hover.png" alt="img">
+                        <h4>Стул повышенного качества</h4>
+                        <p>Не оторваться. </p>
+                     </div>
+                  </a>
+               </div>
+               <div class="block">
+                  <a href="#"><img src="/static/img/product-31.jpg" alt="">
+                     <div class="text">
+                        <img src="/static/img/icon-hover.png" alt="img">
+                        <h4>Стул повышенного качества</h4>
+                        <p>Не оторваться. </p>
+                     </div>
+                  </a>
+               </div>
+
+            </div>
+         </div>
+      </div>
+      </div>
+
+{% endblock %}
