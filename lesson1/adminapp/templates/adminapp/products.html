@@ -1,0 +1,94 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Продукты
+            {% if category %}
+                :<span>{{ category.name }}</span>
+            {% endif %}
+        </h1>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fa fa-table mr-1"></i>
+                <a href="{% url 'admin_staff:categories' %}">Категории</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Изображение</th>
+                            <th>Имя</th>
+                            <th>Описание</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Подробнее</th>
+                            <th>Редактировать</th>
+                            <th>Удалить</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Изображение</th>
+                            <th>Имя</th>
+                            <th>Описание</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Подробнее</th>
+                            <th>Редактировать</th>
+                            <th>Удалить</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for object in objects %}
+                                <tr>
+                                <td><img src="/media/{{object.image|default:'products_images/default.jpg'}}"
+                                  alt="{{ object.name }}" style="width:50px;">
+                                </td>
+                                <td>
+                                  {{ object.name|title }}
+                                </td>
+                                <td>
+                                  {{ object.short_desc|title }}
+                                </td>
+                                <td>{{ object.quantity }}</td>
+                                <td>{{ object.price }} руб</td>
+                                <td>
+                                  <button type="button" class="btn btn-primary">
+                                    <a class="text-white" href={% url 'admin_staff:product_read' object.pk %}>
+                                      подробнее
+                                    </a>
+                                  </button>
+                                </td>
+                                <td>
+                                  <button class="btn btn-warning">
+                                    <a class="text-dark" href={% url 'admin_staff:product_update' object.pk %}>
+                                      редактировать
+                                    </a>
+                                  </button>
+                                    </td>
+                                <td>
+                                  <button class="btn btn-danger">
+                                    <a class="text-white" href={% url 'admin_staff:product_delete' object.pk %}>
+                                      удалить
+                                    </a>
+                                  </button>
+                                </td>
+                                </tr>
+                            {% endfor%}
+                        </tbody>
+                    </table>
+
+            <div class="card-footer">
+                <button class="btn btn-success">
+                  <a class="text-white" href={% url 'admin_staff:product_create' category.pk %}>
+                    новый продукт
+                  </a>
+                </button>
+            </div>
+
+  </div>
+
+{% endblock %}
