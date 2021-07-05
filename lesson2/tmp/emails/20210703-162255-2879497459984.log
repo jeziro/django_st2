@@ -1,0 +1,11 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Account verify
+From: django@gb.local
+To: jeziro@gmail.com
+Date: Sat, 03 Jul 2021 13:22:55 -0000
+Message-ID: <162531857541.22836.158221848017335359@DESKTOP-FIEN9FS.beeline>
+
+Your link for acc activation: http://localhost:8000/auth/verify/jeziro@gmail.com/1d35572b96b29bcc966a2895270a3d2f9de56b1c/
+-------------------------------------------------------------------------------
